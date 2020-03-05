@@ -34,11 +34,12 @@ int sd;
 int i; // aux for cycle
 int ret; // aux for return values
 
-struct string *strings;
 struct string{
     char *text;
     int counter;
 };
+typedef struct string string;
+string *strings;
 
 void handler(int signo){
 
@@ -116,7 +117,7 @@ printf("Planned to spawn %d\n", num_threads);
 
     /******************** MEMORY ********************/
     // strings
-    strings = malloc(num_threads * sizeof(struct string));
+    strings = malloc(num_threads * sizeof(string));
     if(strings == NULL){ fprintf(stderr, "Error in malloc strings\n"); exit(EXIT_FAILURE); }
 
     // init strings and counters
